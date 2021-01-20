@@ -1,6 +1,32 @@
 #! /bin/bash
 
 #function to sort array
+
+function sortArrayAsscending
+{
+array=$1
+n=${#array[@]}
+for((i=0;i<$n;i++))
+do
+        for((j=$i;j<$n;j++))
+        do
+                if [ ${array[i]} -gt ${array[j]} ]
+                then
+                        #swap
+                        temp=${array[i]}
+                        array[$i]=${array[j]}
+                        array[$j]=$temp
+                fi
+        done
+done
+
+echo   ${array[@]}
+
+}
+
+
+
+
 function sortArrayDesc
 {
 array=$1
@@ -46,4 +72,6 @@ done
 echo ${array[@]}
 sorted=$(sortArrayDesc $array)
 echo Sorted Array Descening ${sorted[@]}
+sorted=$(sortArrayAsscending $array)
+echo Sorted Array Assending ${sorted[@]}
 
